@@ -1,5 +1,7 @@
 // N QUEEN PROBLEM
 // Find all possible solutions - enumeration problem
+//Time Complexity : O(n^n)
+//Recurrence Relation : T(n)=T(n-1)*n
 
 #include<iostream>
 using namespace std;
