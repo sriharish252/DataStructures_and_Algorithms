@@ -1,8 +1,9 @@
 // KNIGHT'S TOUR Problem
 // Find all possible solutions - Enumeration Problem
 // Backtracking
-// Time Complexity : 
-// Recurrence Relation : 
+// Time Complexity : O(8^n)
+// Recurrence Relation : T(n) = T(n-1)*8 (worst case)
+// Time Complexity Analysis : http://techieme.in/solving-the-knights-tour-problem/
 
 
 #include<iostream>
