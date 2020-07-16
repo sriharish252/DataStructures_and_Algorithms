@@ -27,14 +27,14 @@ int issafe(int* graph[],int* soln,int v,int vertex,int colour) {
     return 0;
 }
 
-void solve(int* graph[],int soln[],int v,int e,int m,int vertex) {
+void solve(int* graph[],int soln[],int v,int m,int vertex) {
     if(vertex==v)           //if true, then all vertices are coloured
         display(soln,v);
     else {
         for(int i=0;i<m;i++) {                          //Exploring every colour path
             if(issafe(graph,soln,v,vertex,i)==1) {
                 soln[vertex]=i;
-                solve(graph,soln,v,e,m,vertex+1);
+                solve(graph,soln,v,m,vertex+1);
                 soln[vertex]=-1;
             }
         }
@@ -62,5 +62,5 @@ int main() {
     cout<<"Enter the no of Colours : ";
     int m;
     cin>>m;
-    solve(graph,soln,v,e,m,0);
+    solve(graph,soln,v,m,0);
 }
