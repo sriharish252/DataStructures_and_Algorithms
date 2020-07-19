@@ -4,6 +4,8 @@
 // Time Complexity : O(n^n)
 // Recurrence Relation : T(n)=T(n-1)*n
 
+// Author : Sri Harish
+
 #include<iostream>
 using namespace std;
 
@@ -81,3 +83,85 @@ int main() {
         revert_board(board,n);      //Resetting the Board for next loop
     }
 }
+
+
+/*      PLAIN CODE
+
+#include<iostream>
+using namespace std;
+
+void revert_board(int board[],int n) {
+    for(int i=0;i<n;i++)
+        board[i]=-1;
+}
+
+void display_board(int board[],int n) {
+    for(int i=0;i<n;i++) {
+        for(int j=0;j<n;j++) {
+            if(board[j]==i)
+                cout<<"Q"<<i+1<<"  ";
+            else
+                cout<<" *  ";
+        }
+        cout<<endl;
+    }
+    cout<<endl;
+}
+
+int issafe(int board[],int n,int count, int pos) {
+    if(board[pos]!=-1)
+        return 0;
+    if(pos==0) {
+        if(board[pos+1]==-1||(count-board[pos+1]>1)||(count-board[pos+1]<-1))
+            return 1;
+    }
+    else if(pos==n-1) {
+        if(board[pos-1]==-1||(count-board[pos-1]>1)||(count-board[pos-1]<-1))
+            return 1;
+    }
+    else if(board[pos-1]==-1 && board[pos+1]==-1)
+        return 1;
+    else if(board[pos-1]==-1 && (count-board[pos+1]>1 || count-board[pos+1]<-1))
+        return 1;
+    else if(board[pos+1]==-1 && (count-board[pos-1]>1 || count-board[pos-1]<-1))
+        return 1;
+    else if((count-board[pos-1]>1 || count-board[pos-1]<-1)&&(count-board[pos+1]>1 || count-board[pos+1]<-1))
+        return 1;
+    return 0;
+}
+
+int solve(int board[],int n,int count) {
+    if(count==n)
+        return 1;
+    for(int i=0;i<n;i++) {
+        if(issafe(board,n,count,i)==1) {
+            board[i]=count;
+            if(solve(board,n,count+1)==1)
+                return 1;
+            else
+                board[i]=-1;
+        }
+    }
+    return 0;
+}
+
+int main() {
+    int n;
+    cout<<"Enter n: ";
+    cin>>n;
+    cout<<endl;
+    int board[n];
+    revert_board(board,n);
+    for(int i=0;i<n;i++) {
+        board[i]=0;
+        if(solve(board,n,1)==1) {
+            display_board(board,n);
+        }
+        revert_board(board,n);
+    }
+}
+*/
+
+// Author : Sri Harish
+// https://github.com/sriharish252
+// https://www.linkedin.com/in/sri-harish

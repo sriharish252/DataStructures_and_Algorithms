@@ -5,6 +5,8 @@
 // Time Complexity : O(n^n) , n-> no of vertices
 // Recurrence Relation : T(n)=T(n-1)*n
 
+// Author : Sri Harish
+
 #include<iostream>
 using namespace std;
 
@@ -61,4 +63,69 @@ int main() {
         path[0]=i;                      //Assigning the starting node to path
         solve(graph,path,v,1);
     }                                   //revert() is not necessary after each new solve() coz in the
-}                                       //descending phase of solve() we hv reassigned path[i]=-1
+}                                       //descending phase of solve() we hv reassigned path[i]=-
+
+
+/*      PLAIN CODE
+
+#include<iostream>
+using namespace std;
+
+void display(int* path,int v) {
+    for(int i=0;i<v;i++)
+        cout<<path[i]<<" -> ";
+    cout<<path[0];
+    cout<<"\n";
+}
+
+int issafe(int* graph[],int* path,int v,int index,int vertex) {
+    if(graph[path[index-1]][vertex]==1 && index<v) {
+        for(int i=0;i<index;i++)
+            if(path[i]==vertex)
+                return 0;
+        return 1;
+    }
+    return 0;
+}
+
+void solve(int* graph[],int* path,int v,int index) {
+    if(index==v && graph[path[v-1]][path[0]]==1)
+        display(path,v);
+    else {
+        for(int i=0;i<v;i++) {
+            if(issafe(graph,path,v,index,i)==1) {
+                path[index]=i;
+                solve(graph,path,v,index+1);
+                path[index]=-1;
+            }
+        }
+    }
+}
+
+int main() {
+    int v,e;
+    cout<<"Enter no of Vertices and Edges:\n";
+    cin>>v>>e;
+    int *graph[v];
+    int path[v];
+    for(int i=0;i<v;i++) {
+        graph[i]=(int*)calloc(v,sizeof(int));
+        path[i]=-1;
+    }
+    cout<<"Enter Edge Connections (start notation from 0 to v-1):\n";
+    int v1,v2;
+    for(int i=0;i<e;i++) {
+        cin>>v1>>v2;
+        graph[v1][v2]=1;
+        graph[v2][v1]=1;
+    }
+    for(int i=0;i<v;i++) {
+        path[0]=i;
+        solve(graph,path,v,1);
+    }
+}
+*/
+
+// Author : Sri Harish
+// https://github.com/sriharish252
+// https://www.linkedin.com/in/sri-harish

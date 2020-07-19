@@ -6,6 +6,7 @@
 // Recurrence Relation : T(n) = 2*T(n-1)
 // If done in Dynamic Programming, Time Complexity : O(n^2) , Therefore more efficient than this
 
+// Author : Sri Harish
 
 // We take 2 values 'actual' -> actual sum and 'rem' -> remaining sum
 // actual gives the sum of the selected elements
@@ -25,7 +26,7 @@ void display(int* set,int* selected,int n) {
     cout<<"]"<<endl;
 }
 
-int issafe(int k,int actual,int rem) {
+int issafe(int k,int actual,int rem) {		//Feasibility Check
     if(actual<=k && rem>=0)
         return 1;
     return 0;
@@ -59,3 +60,57 @@ int main() {
     cin>>k;
     solve(set,selected,n,k,0,0,sum);
 }
+
+
+/*      PLAIN CODE
+
+#include<iostream>
+using namespace std;
+
+void display(int* set,int* selected,int n) {
+    cout<<"[ ";
+    for(int i=0;i<n;i++)
+        if(selected[i]==1)
+            cout<<set[i]<<" ";
+    cout<<"]"<<endl;
+}
+
+int issafe(int k,int actual,int rem) {
+    if(actual<=k && rem>=0)
+        return 1;
+    return 0;
+}
+
+void solve(int set[],int selected[],int n,int k,int pos,int actual,int rem) {
+    if(actual==k) {
+        display(set,selected,n);
+    }
+    else if(issafe(k,actual,rem)==1) {
+        selected[pos]=1;
+        solve(set,selected,n,k,pos+1,actual+set[pos],rem-set[pos]);
+        selected[pos]=0;
+        solve(set,selected,n,k,pos+1,actual,rem-set[pos]);
+    }
+}
+
+int main() {
+    int n;
+    cout<<"Enter size of set: ";
+    cin>>n;
+    int set[n],k;
+    int selected[n]={0};
+    int sum=0;
+    cout<<"Enter the elements of set: ";
+    for(int i=0;i<n;i++) {
+        cin>>set[i];
+        sum+=set[i];
+    }
+    cout<<"Enter the expected sum: ";
+    cin>>k;
+    solve(set,selected,n,k,0,0,sum);
+}
+*/
+
+// Author : Sri Harish
+// https://github.com/sriharish252
+// https://www.linkedin.com/in/sri-harish
