@@ -1,8 +1,13 @@
-// IS_PRIME - Efficient Approach 
+// IS PRIME - Efficient Approach 
 // Check if a given number is prime or not
 // Time Complexity : O(n*log(n))
 
 // Author : Sri Harish
+
+// Every prime number, except 2 and 3, is in the format 6*k-1 and 6*k+1
+// Hence we check if the given is not divisible by every prime number till SquareRoot(given number)
+
+//This is more efficient since we are not checking divisibility with every single number till Sqrt(n)
 
 #include<iostream>
 #include<math.h>
@@ -27,7 +32,7 @@ int isprime(int n) {                        //Very efficient method
         left = 6*k-1;                       //Updating the next numbers used to check
         right= 6*k+1;
     }
-    return 1;
+    return 1;                               //No divisors were found, hence given number is prime
 }
 
 int main() {
