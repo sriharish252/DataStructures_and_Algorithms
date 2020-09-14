@@ -46,7 +46,7 @@ void reverse_list(node** head_ptr) {                //Reversing the list using I
         curr=next;                                  //Moving the curr pointer to next node
     }
     *head_ptr=prev;                                 //Assigning the end node as the Head
-}                                                       //since in the reversed list, it'll be the Head
+}                                                       //since in the reversed list, it'll be the front node
 
 int main() {
     node* head=NULL;
